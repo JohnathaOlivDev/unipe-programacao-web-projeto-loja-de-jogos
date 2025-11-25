@@ -15,11 +15,11 @@ if (isset($_SESSION['user_id'])) {
     <div class="nav-right">
         <?php if ($user): ?>
             <span class="welcome">Olá, <?= htmlspecialchars($user['username']) ?>!</span>
-            <a href="wishlist.php" class="btn-nav">Lista de Desejos</a>
-            <a href="logout.php" class="btn-nav">Sair</a>
+            <a href="wishlist.php" class="btn btn-warning btn-sm">Lista de Desejos</a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Sair</a
         <?php else: ?>
-            <a href="login.php" class="btn-nav">Login</a>
-            <a href="register.php" class="btn-nav">Criar Conta</a>
+            <a href="login.php" class="btn btn-primary btn-sm">Entrar</a>
+            <a href="register.php" class="btn btn-secondary btn-sm">Criar Conta</a>
         <?php endif; ?>
     </div>
 </nav>
