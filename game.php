@@ -77,6 +77,16 @@ foreach ($screenshots as $img) $media[] = ['type' => 'image', 'src' => $img];
         <p><strong>Data de lançamento:</strong> <?= htmlspecialchars($game['release_date']) ?></p>
         <p><strong>Avaliação (Metacritic):</strong> <?= htmlspecialchars($game['metacritic_score']) ?></p>
         <p><strong>Avaliação dos usuários:</strong> <?= htmlspecialchars($game['user_score']) ?></p>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <form method="POST" action="wishlist_add.php">
+                <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
+                <button class="btn btn-outline-warning mt-3">Adicionar à lista de desejos</button>
+            </form>
+<?php else: ?>
+    <p class="text-warning mt-3">
+        <a href="login.php">Faça login</a> para adicionar à lista de desejos.
+    </p>
+<?php endif; ?>
     </div>
 
 </div>

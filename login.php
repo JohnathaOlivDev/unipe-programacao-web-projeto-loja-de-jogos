@@ -1,29 +1,28 @@
 <?php
-require_once 'db_connect.php';
-session_start();
+require_once __DIR__ . '/includes/session.php';
+require_once __DIR__ . '/db_connect.php';
 
-$error = "";
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user = trim($_POST['username']);
-    $pass = $_POST['password'];
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->execute([$user]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
 
-    if ($row && password_verify($pass, $row['password'])) {
-
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
-
-        header("Location: index.php");
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: index.php');
         exit;
+    } else {
+        $errors[] = "Usuário ou senha incorretos.";
     }
-
-    $error = "Usuário ou senha inválidos!";
 }
 ?>
+
+<?php include 'includes/header.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,20 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="css/forms.css">
 </head>
 <body>
-
-<form method="POST" class="login-box">
-  <h2>Login</h2>
-
-  <?php if ($error): ?>
-    <p class="error"><?= $error ?></p>
-  <?php endif; ?>
-
-  <input type="text" name="username" placeholder="Usuário" required>
-  <input type="password" name="password" placeholder="Senha" required>
-
-  <button>Entrar</button>
-  <a href="register.php">Criar conta</a>
+<form method="POST" class="form-login">
+    <h2>Login</h2>
+    <?php foreach ($errors as $error): ?>
+        <p class="error"><?= htmlspecialchars($error) ?></p>
+    <?php endforeach; ?>
+    <input type="text" name="username" placeholder="Usuário" required>
+    <input type="password" name="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
 </form>
-
-</body>
-</html>
