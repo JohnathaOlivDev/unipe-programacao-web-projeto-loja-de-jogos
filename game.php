@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/db_connect.php';
 
+
+
 if (!isset($_GET['id'])) {
     die("Jogo não encontrado.");
 }
@@ -21,6 +23,9 @@ $media = [];
 foreach ($movies as $mv) $media[] = ['type' => 'video', 'src' => $mv];
 foreach ($screenshots as $img) $media[] = ['type' => 'image', 'src' => $img];
 ?>
+
+<?php include __DIR__ . "/includes/header.php"; ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -31,10 +36,6 @@ foreach ($screenshots as $img) $media[] = ['type' => 'image', 'src' => $img];
     <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
-
-<nav class="navbar navbar-dark px-4">
-    <h3 class="text-light mb-0">Loja de Jogos</h3>
-</nav>
 
 <div class="container py-4">
 

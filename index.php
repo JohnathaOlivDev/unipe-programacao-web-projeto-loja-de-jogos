@@ -3,6 +3,7 @@ require_once __DIR__ . '/db_connect.php';
 $stmt = $pdo->query("SELECT * FROM games ORDER BY id ASC");
 $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,10 +15,6 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="css/cards.css">
 </head>
 <body>
-
-<nav class="navbar navbar-dark px-4">
-  <h3 class="text-light mb-0">Loja de Jogos</h3>
-</nav>
 
 <div class="container py-4">
   <div class="row g-4">
