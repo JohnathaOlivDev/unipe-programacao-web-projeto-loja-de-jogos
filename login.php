@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="css/forms.css">
 </head>
 <body>
-<form method="POST" class="form-login">
+<form method="POST" class="login-box">
     <h2>Login</h2>
     <?php foreach ($errors as $error): ?>
         <p class="error"><?= htmlspecialchars($error) ?></p>
