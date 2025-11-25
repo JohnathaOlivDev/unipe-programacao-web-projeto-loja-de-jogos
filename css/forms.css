@@ -1,0 +1,25 @@
+.login-box {
+  width: 320px;
+  margin: 80px auto;
+  background: #1f2833;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.login-box input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #45a29e;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}

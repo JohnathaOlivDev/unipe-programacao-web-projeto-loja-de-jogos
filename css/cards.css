@@ -1,0 +1,31 @@
+.card {
+  background-color: #1f2833;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-title {
+  color: #66fcf1;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #fff;
+}
+
+.price {
+  color: #45a29e;
+  font-weight: bold;
+}
